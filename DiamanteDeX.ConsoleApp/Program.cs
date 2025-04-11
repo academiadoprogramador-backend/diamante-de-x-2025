@@ -2,7 +2,30 @@
 {
     internal class Program
     {
+        static int quantidadeDeLinhas;
+        static int quantidadeDeX;
+        static int quantidadeDeEspacos;
+
         static void Main(string[] args)
+        {
+            ExibirCabecalho();
+
+            int tamanhoDiamante = ObterTamanhoDoDiamante();
+
+            quantidadeDeLinhas = (tamanhoDiamante - 1) / 2;
+            quantidadeDeX = 1;
+            quantidadeDeEspacos = quantidadeDeLinhas;
+
+            DesenharParteSuperior();
+
+            DesenharParteDoMeio(tamanhoDiamante);
+
+            DesenharParteInferior();
+
+            Console.ReadLine();
+        }
+
+        static void ExibirCabecalho()
         {
             Console.Clear();
             Console.WriteLine("---------------------------------------------");
@@ -10,19 +33,21 @@
             Console.WriteLine("---------------------------------------------");
 
             Console.WriteLine();
+        }
 
+        static int ObterTamanhoDoDiamante()
+        {
             Console.Write("Digite um número ímpar positivo: ");
             int tamanhoDiamante = Convert.ToInt32(Console.ReadLine());
 
-            int quantidadeLinhas = (tamanhoDiamante - 1) / 2;
+            return tamanhoDiamante;
+        }
 
-            int quantidadeDeX = 1;
-            int quantidadeDeEspacos = quantidadeLinhas;
-
+        static void DesenharParteSuperior()
+        {
             Console.WriteLine();
 
-            // Parte superior do diamante
-            for (int linha = 0; linha < quantidadeLinhas; linha++)
+            for (int linha = 0; linha < quantidadeDeLinhas; linha++)
             {
                 // Desenhar os espeços da linha
                 for (int espaco = 0; espaco < quantidadeDeEspacos; espaco++)
@@ -37,18 +62,22 @@
 
                 Console.WriteLine();
             }
+        }
 
-            // Parte do meio do diamante
+        static void DesenharParteDoMeio(int tamanhoDiamante)
+        {
             for (int x = 0; x < tamanhoDiamante; x++)
                 Console.Write("x");
 
             Console.WriteLine();
+        }
 
+        static void DesenharParteInferior()
+        {
             quantidadeDeX -= 2;
             quantidadeDeEspacos = 1;
 
-            // Parte inferior do diamante
-            for (int linha = 0; linha < quantidadeLinhas; linha++)
+            for (int linha = 0; linha < quantidadeDeLinhas; linha++)
             {
                 // Desenhar os espeços da linha
                 for (int espaco = 0; espaco < quantidadeDeEspacos; espaco++)
@@ -63,8 +92,6 @@
 
                 Console.WriteLine();
             }
-
-            Console.ReadLine();
         }
     }
 }
