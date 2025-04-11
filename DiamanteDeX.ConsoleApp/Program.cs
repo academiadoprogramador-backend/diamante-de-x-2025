@@ -19,6 +19,8 @@
             int quantidadeDeX = 1;
             int quantidadeDeEspacos = quantidadeLinhas;
 
+            Console.WriteLine();
+
             // Parte superior do diamante
             for (int linha = 0; linha < quantidadeLinhas; linha++)
             {
@@ -37,6 +39,10 @@
             }
 
             // Parte do meio do diamante
+            for (int x = 0; x < tamanhoDiamante; x++)
+                Console.Write("x");
+
+            Console.WriteLine();
 
             // Parte inferior do diamante
 
